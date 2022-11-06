@@ -1,6 +1,6 @@
-require('dotenv').config();
-
-const config = {
+import dotenv from 'dotenv';
+dotenv.config();
+export const config = {
   server: {
     port: process.env.port || 3000,
   },
@@ -12,5 +12,3 @@ const config = {
     name: process.env.db_name || 'chat-rick-morty',
   },
 };
-
-module.exports = { config };
