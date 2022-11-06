@@ -1,3 +1,7 @@
+# editor config
+.editorconfig
+.eslintrc.json
+api/*
 # Logs
 logs
 *.log
