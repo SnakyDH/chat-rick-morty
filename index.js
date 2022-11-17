@@ -1,11 +1,16 @@
 // imports
 import express from 'express';
+import { createServer } from 'http';
+import { realtimeServer } from './services/realtimeServer.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import cors from 'cors';
-//myImports
 import { config } from './config/config.js';
-import { getData } from './scripts/scrapper.rick-morty.js';
+import usersRoutes from './api/users/routes.js';
+
 const port = config.server.port;
 const app = express();
+const httpServer = createServer(app);
 
 const corsOptions = {
   origin: '*',
@@ -13,13 +18,17 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
+console.log(__dirname);
+// public directory
+app.use(express.static(path.join(__dirname, 'static')));
 app.use(cors(corsOptions));
 
-app.get('/', (req, res) => {
-  res.send('hola');
-  console.log(getData('rick'));
-});
-
-app.listen(port, () => {
+app.use('/api/', usersRoutes);
+httpServer.listen(port, () => {
   console.log(`server on port ${port}`);
 });
+
+realtimeServer(httpServer);
