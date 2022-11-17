@@ -1,4 +1,5 @@
-import config from '../config/config.js';
+import { config } from '../config/config.js';
+
 import { createPool } from 'mariadb';
 
 export const pool = createPool({
