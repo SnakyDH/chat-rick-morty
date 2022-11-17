@@ -6,7 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
 import { config } from './config/config.js';
-import usersRoutes from './api/users/routes.js';
+import routes from './routes/general.routes.js';
 
 const port = config.server.port;
 const app = express();
@@ -17,6 +17,8 @@ const corsOptions = {
   credentials: true,
   optionSuccessStatus: 200,
 };
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -25,8 +27,8 @@ console.log(__dirname);
 // public directory
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(cors(corsOptions));
-
-app.use('/api/', usersRoutes);
+//routes
+app.use(routes);
 httpServer.listen(port, () => {
   console.log(`server on port ${port}`);
 });
