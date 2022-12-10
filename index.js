@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 import cors from 'cors';
 import { config } from './config/config.js';
 import routes from './routes/general.routes.js';
-
+import cookieParser from 'cookie-parser';
 const port = config.server.port;
 const app = express();
 const httpServer = createServer(app);
@@ -17,15 +17,15 @@ const corsOptions = {
   credentials: true,
   optionSuccessStatus: 200,
 };
+//parsers
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+app.use(cookieParser());
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
-console.log(__dirname);
 // public directory
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, '/static')));
 app.use(cors(corsOptions));
 //routes
 app.use(routes);
