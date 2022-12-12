@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link
+      rel="shortcut icon"
+      href="https://iconarchive.com/download/i106878/goodstuff-no-nonsense/free-space/rick.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../public/css/chat.css" />
+  </head>
+  <body style="background-color: #011f26">
+    <section class="">
+      <div class="container-fluid d-flex p-0">
+        <div class="col-12">
+          <header
+            style="background-color: #111238"
+            class="card-header d-flex justify-content-between align-items-center p-3 text-white"
+          >
+            <h1 class="mb-0" id="role-chat"></h1>
+          </header>
+          <div
+            class="card-body"
+            data-mdb-perfect-scrollbar="true"
+            style="position: relative; background-color: #011f26"
+            id="all-messages"
+            >
+          </div>
+          <footer>
+              <form
+                id="form"
+                action=""
+                class="card-footer text-muted d-flex justify-content-start align-items-center p-5"
+                style="background-color: #111238"
+              >
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="message"
+                  placeholder="Type message"
+                  autocomplete="off"
+                />
+                <input
+                  type="button"
+                  id="send-btn"
+                  class="ms-3 btn btn-outline-primary"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-send-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"
+                    />
+                  </svg>
+                </input>
+              </form>
+            </footer>
+        </div>
+      </div>
+    </section>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../sw/dist/sweetalert2.all.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../public/js/scripts.js"></script>
+  </body>
+</html>
