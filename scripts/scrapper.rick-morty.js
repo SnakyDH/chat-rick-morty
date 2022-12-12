@@ -1,4 +1,4 @@
-import axios from 'axios';
+/* import axios from 'axios';
 
 export function getData(character) {
   axios
@@ -17,3 +17,4 @@ export function getData(character) {
       console.error(error);
     });
 }
+ */
